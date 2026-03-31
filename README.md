@@ -59,7 +59,7 @@ terraform apply
 With a custom domain:
 
 ```bash
-terraform apply -var="domain_name=djordje.vucinac.com"
+terraform apply -var="domain_name=djordje.vucinac.com" -var="zone_name=vucinac.com"
 ```
 
 See `COMMANDS.md` for the full reference (Terraform variables, headed tests, teardown, etc).

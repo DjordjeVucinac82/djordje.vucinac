@@ -4,7 +4,7 @@
 Personal portfolio website with a terminal/YAML aesthetic.
 - **Design:** Black background, red YAML keys, yellow YAML values, macOS iTerm2 terminal look
 - **Pages:** About Me (landing), Education, Work Experience, Hobbies
-- **Domain:** TBD (to be provided)
+- **Domain:** djordje.vucinac.com (subdomain of vucinac.com)
 - **Repo:** git@github.com:DjordjeVucinac82/djordje.vucinac.git
 
 ---
@@ -50,14 +50,15 @@ Personal portfolio website with a terminal/YAML aesthetic.
 ### Phase 3 — Deployment
 - [ ] Upload site files to S3 (`./scripts/deploy.sh`)
 - [ ] Verify CloudFront distribution serves the site
-- [ ] Configure custom domain once provided (`terraform apply -var="domain_name=djordje.vucinac.com"`)
-- [ ] Set up CI/CD (GitHub Actions → S3 sync) once repo is provided
+- [ ] Configure custom domain (`terraform apply -var="domain_name=djordje.vucinac.com" -var="zone_name=vucinac.com"`)
+- [ ] Set up CI/CD (GitHub Actions → S3 sync)
 
 ---
 
 ## Decisions & Notes
-- Domain name: **TBD** — ACM + Route 53 will be created automatically when `domain_name` var is set
-- Git repo: **TBD** — CI/CD setup blocked until provided
+- Domain name: **djordje.vucinac.com** — subdomain of vucinac.com; Route 53 hosted zone ID: `Z014736319T5HMNYUSKNU`
+- Terraform requires two vars: `domain_name=djordje.vucinac.com` and `zone_name=vucinac.com` (zone lookup uses parent domain, not subdomain)
+- Git repo: **github.com/DjordjeVucinac82/djordje.vucinac** — default branch is `dev`
 - Content: **real CV data populated** — experience, education, hobbies all updated
 - Hobby photos: **pending** — drop images into `site/images/hobbies/` when ready
 - AWS region: **eu-central-1** for S3/CloudFront; ACM always **us-east-1** (AWS requirement, handled by provider alias)
