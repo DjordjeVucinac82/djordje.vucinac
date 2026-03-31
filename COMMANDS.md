@@ -108,7 +108,6 @@ Go to: **GitHub repo → Settings → Secrets and variables → Actions → New 
 |---|---|
 | `AWS_ACCESS_KEY_ID` | IAM user access key (see below) |
 | `AWS_SECRET_ACCESS_KEY` | IAM user secret key |
-| `AWS_REGION` | `eu-central-1` |
 | `S3_BUCKET_NAME` | run `terraform output -raw s3_bucket_name` after apply |
 | `CLOUDFRONT_DISTRIBUTION_ID` | run `terraform output -raw cloudfront_distribution_id` after apply |
 

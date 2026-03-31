@@ -7,7 +7,6 @@
 # Required GitHub repository secrets:
 #   AWS_ACCESS_KEY_ID          — IAM user access key
 #   AWS_SECRET_ACCESS_KEY      — IAM user secret key
-#   AWS_REGION                 — e.g. eu-central-1
 #   S3_BUCKET_NAME             — from: terraform output -raw s3_bucket_name
 #   CLOUDFRONT_DISTRIBUTION_ID — from: terraform output -raw cloudfront_distribution_id
 # =============================================================
@@ -45,7 +44,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          aws-region: eu-central-1  # Not sensitive — hardcoded to avoid missing secret errors
 
       # 3. Sync the site/ directory to S3
       #    --delete        removes files from S3 that no longer exist locally
