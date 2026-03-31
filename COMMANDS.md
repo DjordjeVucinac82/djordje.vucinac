@@ -84,7 +84,9 @@ terraform destroy
 
 ## Deploy site files to AWS
 
-After `terraform apply`, upload the site and invalidate CloudFront:
+**Normal workflow:** push to `dev` — GitHub Actions handles S3 sync and CloudFront invalidation automatically.
+
+**Manual deploy** (if needed outside of CI/CD):
 ```bash
 ./scripts/deploy.sh
 ```
@@ -100,19 +102,22 @@ This script:
 
 The workflow (`.github/workflows/deploy.yml`) auto-deploys on every push to `dev` (including merged PRs).
 
-### One-time setup: add repository secrets
-
-Go to: **GitHub repo → Settings → Secrets and variables → Actions → New repository secret**
+### Repository secrets (already configured)
 
 | Secret | Value |
 |---|---|
-| `AWS_ACCESS_KEY_ID` | IAM user access key (see below) |
-| `AWS_SECRET_ACCESS_KEY` | IAM user secret key |
-| `S3_BUCKET_NAME` | run `terraform output -raw s3_bucket_name` after apply |
-| `CLOUDFRONT_DISTRIBUTION_ID` | run `terraform output -raw cloudfront_distribution_id` after apply |
+| `AWS_ACCESS_KEY_ID` | from local `vucinac` AWS profile |
+| `AWS_SECRET_ACCESS_KEY` | from local `vucinac` AWS profile |
+| `S3_BUCKET_NAME` | `vucinac-portfolio-site` |
+| `CLOUDFRONT_DISTRIBUTION_ID` | `E3KR8GF7MNX17R` |
 
-### IAM user for GitHub Actions (minimal permissions)
-Create a dedicated IAM user with this inline policy (replace bucket/distribution ARNs after `terraform apply`):
+To re-set secrets from the local `vucinac` profile:
+```bash
+gh secret set AWS_ACCESS_KEY_ID --body "$(aws configure get aws_access_key_id --profile vucinac)" --repo DjordjeVucinac82/djordje.vucinac
+gh secret set AWS_SECRET_ACCESS_KEY --body "$(aws configure get aws_secret_access_key --profile vucinac)" --repo DjordjeVucinac82/djordje.vucinac
+```
+
+### IAM permissions for the vucinac profile (minimal required)
 
 ```json
 {
@@ -129,7 +134,7 @@ Create a dedicated IAM user with this inline policy (replace bucket/distribution
     {
       "Effect": "Allow",
       "Action": "cloudfront:CreateInvalidation",
-      "Resource": "arn:aws:cloudfront::ACCOUNT_ID:distribution/DISTRIBUTION_ID"
+      "Resource": "arn:aws:cloudfront::646485834024:distribution/E3KR8GF7MNX17R"
     }
   ]
 }

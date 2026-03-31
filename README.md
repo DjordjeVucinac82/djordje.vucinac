@@ -46,23 +46,21 @@ docker run --rm -p 8081:80 vucinac
 
 ## Deploy to AWS
 
+Site is live at **https://djordje.vucinac.com**
+
+CI/CD is fully automated — every push to `dev` triggers the GitHub Actions workflow which syncs `site/` to S3 and invalidates CloudFront.
+
 ```bash
-# 1. Provision infrastructure (first time only)
+# Provision infrastructure (first time only)
 cd terraform
 terraform init
-terraform apply
+terraform apply -var="domain_name=djordje.vucinac.com" -var="zone_name=vucinac.com"
 
-# 2. Upload site files and invalidate CloudFront cache
+# Manual deploy (if needed outside of CI/CD)
 ./scripts/deploy.sh
 ```
 
-With a custom domain:
-
-```bash
-terraform apply -var="domain_name=djordje.vucinac.com" -var="zone_name=vucinac.com"
-```
-
-See `COMMANDS.md` for the full reference (Terraform variables, headed tests, teardown, etc).
+See `COMMANDS.md` for the full reference (Terraform variables, secrets setup, teardown, etc).
 
 ## Project structure
 
@@ -72,7 +70,10 @@ vucinac/
 ├── terraform/          # AWS infrastructure (S3, CloudFront, ACM, Route 53)
 ├── tests/              # Playwright E2E tests
 ├── scripts/
-│   └── deploy.sh       # S3 sync + CloudFront invalidation
+│   └── deploy.sh       # Manual S3 sync + CloudFront invalidation
+├── .github/
+│   └── workflows/
+│       └── deploy.yml  # CI/CD — auto-deploys on push to dev
 ├── Dockerfile
 ├── COMMANDS.md         # All commands to run, test, and deploy
 └── CLAUDE.md           # Project notes and decisions
