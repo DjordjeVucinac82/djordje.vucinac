@@ -63,22 +63,16 @@ Edit the relevant file and refresh the browser — no build step needed.
 - AWS CLI configured (`aws configure`)
 - AWS credentials with permissions for S3, CloudFront, ACM, Route53
 
-### Phase 1 — Deploy without custom domain (S3 + CloudFront only)
+### Deploy infrastructure
 ```bash
 cd terraform
 terraform init
-terraform plan
-terraform apply
-```
-After apply, the site URL is printed as `cloudfront_url` output.
-
-### Phase 2 — Add custom domain (when domain_name is ready)
-```bash
-cd terraform
+terraform plan -var="domain_name=djordje.vucinac.com" -var="zone_name=vucinac.com"
 terraform apply -var="domain_name=djordje.vucinac.com" -var="zone_name=vucinac.com"
 ```
-This creates the ACM certificate, validates it via Route53 DNS, and configures CloudFront with the custom domain.
-Note: zone_name is the parent hosted zone (vucinac.com), not the subdomain itself.
+After apply, the site URL is printed as `site_url` output (https://djordje.vucinac.com).
+- `domain_name` — subdomain the site is served on: `djordje.vucinac.com`
+- `zone_name` — parent Route53 hosted zone: `vucinac.com` (hosted zone ID: `Z014736319T5HMNYUSKNU`)
 
 ### Destroy all infrastructure
 ```bash
