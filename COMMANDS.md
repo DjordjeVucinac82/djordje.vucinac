@@ -96,6 +96,48 @@ This script:
 
 ---
 
+## GitHub Actions — CI/CD setup
+
+The workflow (`.github/workflows/deploy.yml`) auto-deploys on every push to `dev` (including merged PRs).
+
+### One-time setup: add repository secrets
+
+Go to: **GitHub repo → Settings → Secrets and variables → Actions → New repository secret**
+
+| Secret | Value |
+|---|---|
+| `AWS_ACCESS_KEY_ID` | IAM user access key (see below) |
+| `AWS_SECRET_ACCESS_KEY` | IAM user secret key |
+| `AWS_REGION` | `eu-central-1` |
+| `S3_BUCKET_NAME` | run `terraform output -raw s3_bucket_name` after apply |
+| `CLOUDFRONT_DISTRIBUTION_ID` | run `terraform output -raw cloudfront_distribution_id` after apply |
+
+### IAM user for GitHub Actions (minimal permissions)
+Create a dedicated IAM user with this inline policy (replace bucket/distribution ARNs after `terraform apply`):
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": ["s3:PutObject", "s3:DeleteObject", "s3:GetObject", "s3:ListBucket"],
+      "Resource": [
+        "arn:aws:s3:::vucinac-portfolio-site",
+        "arn:aws:s3:::vucinac-portfolio-site/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": "cloudfront:CreateInvalidation",
+      "Resource": "arn:aws:cloudfront::ACCOUNT_ID:distribution/DISTRIBUTION_ID"
+    }
+  ]
+}
+```
+
+---
+
 ## Terraform variables reference
 
 | Variable       | Default        | Description                                      |

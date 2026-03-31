@@ -51,7 +51,7 @@ Personal portfolio website with a terminal/YAML aesthetic.
 - [ ] Upload site files to S3 (`./scripts/deploy.sh`)
 - [ ] Verify CloudFront distribution serves the site
 - [ ] Configure custom domain (`terraform apply -var="domain_name=djordje.vucinac.com" -var="zone_name=vucinac.com"`)
-- [ ] Set up CI/CD (GitHub Actions → S3 sync)
+- [x] Set up CI/CD (GitHub Actions → S3 sync) — `.github/workflows/deploy.yml`, triggers on push to dev
 
 ---
 

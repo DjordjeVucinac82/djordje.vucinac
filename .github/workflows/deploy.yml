@@ -1,0 +1,63 @@
+# =============================================================
+# deploy.yml — Deploy site to S3 + invalidate CloudFront
+#
+# Triggers on every push to the dev branch.
+# A merged pull request also counts as a push, so this covers both cases.
+#
+# Required GitHub repository secrets:
+#   AWS_ACCESS_KEY_ID          — IAM user access key
+#   AWS_SECRET_ACCESS_KEY      — IAM user secret key
+#   AWS_REGION                 — e.g. eu-central-1
+#   S3_BUCKET_NAME             — from: terraform output -raw s3_bucket_name
+#   CLOUDFRONT_DISTRIBUTION_ID — from: terraform output -raw cloudfront_distribution_id
+# =============================================================
+
+name: Deploy to S3 + CloudFront
+
+on:
+  push:
+    branches:
+      - dev
+
+# Prevent two deployments running at the same time.
+# If a new push comes in while a deploy is running, cancel the old one.
+concurrency:
+  group: deploy-dev
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy site
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Check out the repository code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Configure AWS credentials using repository secrets
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      # 3. Sync the site/ directory to S3
+      #    --delete        removes files from S3 that no longer exist locally
+      #    --cache-control sets browser cache to 1 day (same as CloudFront default TTL)
+      - name: Sync site to S3
+        run: |
+          aws s3 sync site/ s3://${{ secrets.S3_BUCKET_NAME }} \
+            --delete \
+            --cache-control "max-age=86400" \
+            --exclude ".DS_Store" \
+            --exclude "*.swp"
+
+      # 4. Invalidate CloudFront cache so visitors get the latest files immediately.
+      #    Without this, CloudFront may serve stale content for up to 24 hours.
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/*"
