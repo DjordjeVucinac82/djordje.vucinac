@@ -75,9 +75,10 @@ After apply, the site URL is printed as `cloudfront_url` output.
 ### Phase 2 — Add custom domain (when domain_name is ready)
 ```bash
 cd terraform
-terraform apply -var="domain_name=djordje.vucinac.com"
+terraform apply -var="domain_name=djordje.vucinac.com" -var="zone_name=vucinac.com"
 ```
 This creates the ACM certificate, validates it via Route53 DNS, and configures CloudFront with the custom domain.
+Note: zone_name is the parent hosted zone (vucinac.com), not the subdomain itself.
 
 ### Destroy all infrastructure
 ```bash
@@ -107,5 +108,6 @@ This script:
 |----------------|----------------|--------------------------------------------------|
 | `project`      | `"vucinac"`    | Used for resource naming and tags                |
 | `environment`  | `"production"` | Tag value                                        |
-| `domain_name`  | `""`           | Custom domain — leave empty until domain is ready |
+| `domain_name`  | `""`           | Custom domain e.g. `djordje.vucinac.com` — leave empty until domain is ready |
+| `zone_name`    | `""`           | Parent Route53 hosted zone e.g. `vucinac.com` — required when domain_name is set |
 | `aws_region`   | `"eu-central-1"` | S3/CloudFront region; ACM always uses us-east-1 automatically |

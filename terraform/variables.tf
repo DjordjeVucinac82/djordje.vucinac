@@ -26,6 +26,17 @@ variable "domain_name" {
   default     = ""
 }
 
+variable "zone_name" {
+  description = <<-EOT
+    Route53 hosted zone name — the parent domain that owns the hosted zone.
+    For a subdomain like djordje.vucinac.com, this should be "vucinac.com".
+    For an apex domain like vucinac.com, this should be "vucinac.com".
+    Must already exist as a hosted zone in your AWS account.
+  EOT
+  type        = string
+  default     = ""
+}
+
 variable "aws_region" {
   description = <<-EOT
     AWS region for S3 and other non-global resources.

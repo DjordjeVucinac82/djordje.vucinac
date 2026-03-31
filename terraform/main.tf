@@ -144,7 +144,9 @@ resource "aws_acm_certificate" "site" {
 data "aws_route53_zone" "site" {
   count = local.has_domain ? 1 : 0
 
-  name         = var.domain_name
+  # Use zone_name (parent domain) not domain_name.
+  # For djordje.vucinac.com the hosted zone is vucinac.com, not the subdomain itself.
+  name         = var.zone_name
   private_zone = false
 }
 
