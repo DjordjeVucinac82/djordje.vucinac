@@ -37,14 +37,16 @@ terraform {
 }
 
 provider "aws" {
-  region = var.aws_region
+  region  = var.aws_region
+  profile = var.aws_profile
 }
 
 # ACM certificates for CloudFront MUST be in us-east-1 — this is an AWS hard requirement.
 # All other resources use the default provider above (eu-central-1).
 provider "aws" {
-  alias  = "us_east_1"
-  region = "us-east-1"
+  alias   = "us_east_1"
+  region  = "us-east-1"
+  profile = var.aws_profile
 }
 
 # ── Local values ─────────────────────────────────────────────
@@ -177,6 +179,9 @@ resource "aws_route53_record" "cert_validation" {
 # Wait until the certificate is fully validated before using it in CloudFront
 resource "aws_acm_certificate_validation" "site" {
   count = local.has_domain ? 1 : 0
+
+  # Must use the same provider as the certificate — both must be in us-east-1
+  provider = aws.us_east_1
 
   certificate_arn = aws_acm_certificate.site[0].arn
 

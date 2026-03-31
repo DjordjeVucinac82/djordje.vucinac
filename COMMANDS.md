@@ -60,7 +60,7 @@ Edit the relevant file and refresh the browser — no build step needed.
 
 ### Prerequisites
 - Terraform >= 1.5 (`brew install terraform`)
-- AWS CLI configured (`aws configure`)
+- AWS CLI configured with `vucinac` profile (`aws configure --profile vucinac`)
 - AWS credentials with permissions for S3, CloudFront, ACM, Route53
 
 ### Deploy infrastructure
@@ -144,6 +144,7 @@ Create a dedicated IAM user with this inline policy (replace bucket/distribution
 |----------------|----------------|--------------------------------------------------|
 | `project`      | `"vucinac"`    | Used for resource naming and tags                |
 | `environment`  | `"production"` | Tag value                                        |
+| `aws_profile`  | `"vucinac"`    | AWS CLI profile used for authentication |
 | `domain_name`  | `""`           | Custom domain e.g. `djordje.vucinac.com` — leave empty until domain is ready |
 | `zone_name`    | `""`           | Parent Route53 hosted zone e.g. `vucinac.com` — required when domain_name is set |
 | `aws_region`   | `"eu-central-1"` | S3/CloudFront region; ACM always uses us-east-1 automatically |

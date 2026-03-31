@@ -37,6 +37,12 @@ variable "zone_name" {
   default     = ""
 }
 
+variable "aws_profile" {
+  description = "AWS CLI profile to use for authentication (from ~/.aws/credentials or ~/.aws/config)"
+  type        = string
+  default     = "vucinac"
+}
+
 variable "aws_region" {
   description = <<-EOT
     AWS region for S3 and other non-global resources.
