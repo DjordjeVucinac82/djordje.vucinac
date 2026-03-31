@@ -47,10 +47,10 @@ Personal portfolio website with a terminal/YAML aesthetic.
 - [x] Route 53 DNS records (conditional on domain_name)
 - [x] Outputs: CloudFront URL, S3 bucket name, distribution ID, site URL
 
-### Phase 3 — Deployment
-- [ ] Upload site files to S3 (`./scripts/deploy.sh`)
-- [ ] Verify CloudFront distribution serves the site
-- [ ] Configure custom domain (`terraform apply -var="domain_name=djordje.vucinac.com" -var="zone_name=vucinac.com"`)
+### Phase 3 — Deployment ✅
+- [x] Upload site files to S3 (via GitHub Actions)
+- [x] Verify CloudFront distribution serves the site
+- [x] Configure custom domain — live at https://djordje.vucinac.com
 - [x] Set up CI/CD (GitHub Actions → S3 sync) — `.github/workflows/deploy.yml`, triggers on push to dev
 
 ---
