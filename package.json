@@ -1,0 +1,17 @@
+{
+  "name": "vucinac-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.51.0",
+    "http-server": "^14.1.1"
+  }
+}

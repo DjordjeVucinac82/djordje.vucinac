@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hobbies — djordje.vucinac.com</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="terminal">
+
+    <!-- TITLE BAR -->
+    <div class="terminal__titlebar">
+      <div class="terminal__titlebar-dots">
+        <span class="terminal__dot terminal__dot--close"></span>
+        <span class="terminal__dot terminal__dot--min"></span>
+        <span class="terminal__dot terminal__dot--max"></span>
+      </div>
+      <span class="terminal__titlebar-title">djordje.vucinac.com — hobbies</span>
+    </div>
+
+    <!-- TAB BAR: hobbies tab is active on this page -->
+    <nav class="terminal__tabbar" aria-label="Site navigation">
+      <a href="about.html"      class="terminal__tab">about</a>
+      <a href="education.html"  class="terminal__tab">education</a>
+      <a href="experience.html" class="terminal__tab">experience</a>
+      <a href="hobbies.html"    class="terminal__tab terminal__tab--active">hobbies</a>
+    </nav>
+
+    <!-- CONTENT -->
+    <main class="terminal__content" id="content">
+
+      <span class="yaml-comment"># ~/vucinac/hobbies.yaml</span>
+
+      <!-- Section: hobbies -->
+      <span class="yaml-section"><span class="yaml-key">hobbies</span><span class="yaml-punct">:</span></span>
+      <div class="yaml-block">
+
+        <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-key">name</span><span class="yaml-punct">: </span><span class="yaml-val">Scuba Diving</span></span>
+        <div class="yaml-list-block">
+          <span class="yaml-key">photos</span><span class="yaml-punct">:</span>
+          <div class="hobby-photos">
+            <div class="hobby-photo"><span>[ photo ]</span></div>
+            <div class="hobby-photo"><span>[ photo ]</span></div>
+            <div class="hobby-photo"><span>[ photo ]</span></div>
+          </div>
+        </div>
+
+        <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-key">name</span><span class="yaml-punct">: </span><span class="yaml-val">Hiking</span></span>
+        <div class="yaml-list-block">
+          <span class="yaml-key">photos</span><span class="yaml-punct">:</span>
+          <div class="hobby-photos">
+            <div class="hobby-photo"><span>[ photo ]</span></div>
+            <div class="hobby-photo"><span>[ photo ]</span></div>
+            <div class="hobby-photo"><span>[ photo ]</span></div>
+          </div>
+        </div>
+
+        <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-key">name</span><span class="yaml-punct">: </span><span class="yaml-val">Open Source</span></span>
+        <div class="yaml-list-block">
+          <span class="yaml-inline"><span class="yaml-key">platforms</span><span class="yaml-punct">: </span><span class="yaml-val">[GitHub, GitLab]</span></span>
+          <span class="yaml-inline"><span class="yaml-key">focus</span><span class="yaml-punct">: </span><span class="yaml-val">Terraform modules, Kubernetes tooling, CLI utilities</span></span>
+        </div>
+
+        <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-key">name</span><span class="yaml-punct">: </span><span class="yaml-val">Reading</span></span>
+        <div class="yaml-list-block">
+          <span class="yaml-inline"><span class="yaml-key">genres</span><span class="yaml-punct">: </span><span class="yaml-val">[technical, science fiction, history]</span></span>
+          <span class="yaml-inline"><span class="yaml-key">recent</span><span class="yaml-punct">: </span><span class="yaml-val">"The Phoenix Project", "Designing Data-Intensive Applications"</span></span>
+        </div>
+
+        <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-key">name</span><span class="yaml-punct">: </span><span class="yaml-val">AI Engineering</span></span>
+        <div class="yaml-list-block">
+          <span class="yaml-inline"><span class="yaml-key">focus</span><span class="yaml-punct">: </span><span class="yaml-val">Applying AI/LLMs to DevOps workflows and automation</span></span>
+          <span class="yaml-inline"><span class="yaml-key">tools</span><span class="yaml-punct">: </span><span class="yaml-val">[Claude, LangChain, Python, Anthropic API]</span></span>
+        </div>
+
+      </div>
+
+      <span class="cursor"></span>
+
+    </main>
+
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

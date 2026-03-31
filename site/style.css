@@ -1,0 +1,329 @@
+/* ============================================================
+   djordje.vucinac.com — Terminal/YAML Portfolio Stylesheet
+   Design: macOS iTerm2 aesthetic
+   Colors: Black bg | Red YAML keys | Yellow YAML values
+   ============================================================ */
+
+/* --- CSS Custom Properties --------------------------------- */
+:root {
+  --bg:             #000000;   /* page + content background */
+  --titlebar-bg:    #2d2d2d;   /* macOS-style title bar */
+  --tabbar-bg:      #1a1a1a;   /* tab strip background */
+  --tab-inactive:   #3a3a3a;   /* background of non-active tabs */
+  --tab-border:     #555555;   /* tab border color */
+
+  /* YAML syntax colors */
+  --color-key:      #ff3b30;   /* RED   — YAML keys and section titles */
+  --color-val:      #ffcc00;   /* YELLOW — YAML values and content */
+  --color-comment:  #6a9955;   /* GREEN  — YAML comments (# lines) */
+  --color-punct:    #aaaaaa;   /* GRAY   — colons, dashes, brackets */
+
+  /* macOS traffic light dots */
+  --dot-close:      #ff5f57;
+  --dot-min:        #febc2e;
+  --dot-max:        #28c840;
+
+  --font-family:    'JetBrains Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+  --font-size:      14px;
+  --line-height:    1.75;
+}
+
+/* --- Reset ------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Base -------------------------------------------------- */
+html, body {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--color-val);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+
+  /* Center the terminal window on the page */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 20px 60px;
+}
+
+/* --- Terminal Window Container ----------------------------- */
+.terminal {
+  width: 920px;
+  max-width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #3a3a3a;
+  /* Realistic drop shadow like a macOS app window */
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.5),
+    0 20px 60px rgba(0,0,0,0.8),
+    0 4px 12px rgba(0,0,0,0.4);
+}
+
+/* --- Title Bar --------------------------------------------- */
+.terminal__titlebar {
+  background: var(--titlebar-bg);
+  height: 38px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  position: relative;
+  /* Subtle bottom border separating from tab bar */
+  border-bottom: 1px solid #222;
+  user-select: none;
+}
+
+/* Traffic light dots group */
+.terminal__titlebar-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Each dot */
+.terminal__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.terminal__dot--close { background: var(--dot-close); }
+.terminal__dot--min   { background: var(--dot-min); }
+.terminal__dot--max   { background: var(--dot-max); }
+
+/* Centered title text (absolutely positioned so dots don't affect it) */
+.terminal__titlebar-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #8a8a8a;
+  font-size: 13px;
+  font-family: var(--font-family);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* --- Tab Bar ----------------------------------------------- */
+.terminal__tabbar {
+  background: var(--tabbar-bg);
+  display: flex;
+  align-items: flex-end;
+  padding: 6px 8px 0;
+  gap: 4px;
+  /* Allow horizontal scroll on narrow screens without showing scrollbar */
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-bottom: 1px solid #333;
+}
+.terminal__tabbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual tab */
+.terminal__tab {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 18px 6px;
+  font-size: 13px;
+  font-family: var(--font-family);
+  color: #777777;
+  background: var(--tab-inactive);
+  border: 1px solid var(--tab-border);
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.15s ease;
+  /* Slight top margin so inactive tabs feel "behind" */
+  margin-top: 4px;
+}
+
+.terminal__tab:hover {
+  color: #cccccc;
+}
+
+/* Active tab — blends seamlessly into the content area */
+.terminal__tab--active {
+  background: var(--bg);
+  color: var(--color-val);
+  border-color: #555555;
+  /* Overlap the tabbar's bottom border to create a "connected" look */
+  border-bottom-color: var(--bg);
+  margin-bottom: -1px;
+  margin-top: 0;
+  z-index: 1;
+}
+
+/* --- Content Area ------------------------------------------ */
+.terminal__content {
+  background: var(--bg);
+  padding: 28px 36px 48px;
+  min-height: 520px;
+  /* Prevent long lines from expanding the terminal beyond max-width */
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* --- YAML Typography --------------------------------------- */
+
+/* Comment line: # ~/vucinac/about.yaml */
+.yaml-comment {
+  display: block;
+  color: var(--color-comment);
+  margin-bottom: 16px;
+}
+
+/* Top-level section key: "about:" */
+.yaml-section {
+  display: block;
+  color: var(--color-key);
+  margin-top: 24px;
+  margin-bottom: 2px;
+}
+.yaml-section:first-of-type {
+  margin-top: 0;
+}
+
+/* Indented block container — adds 2-space visual indent */
+.yaml-block {
+  display: block;
+  padding-left: 16px;
+}
+
+/* A single key: value line */
+.yaml-inline {
+  display: block;
+}
+
+/* YAML key (red) */
+.yaml-key {
+  color: var(--color-key);
+}
+
+/* YAML value (yellow) */
+.yaml-val {
+  color: var(--color-val);
+}
+
+/* Clickable links inside YAML values — inherit yellow, underline only on hover */
+.yaml-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease;
+}
+.yaml-link:hover {
+  border-bottom-color: var(--color-val);
+}
+
+/* Punctuation: colons, dashes, brackets (gray) */
+.yaml-punct {
+  color: var(--color-punct);
+}
+
+/* List item line — extra indent to show the dash belongs to a list */
+.yaml-list-item {
+  display: block;
+  padding-left: 0;
+}
+
+/* Nested block inside a list item */
+.yaml-list-block {
+  display: block;
+  padding-left: 32px;
+}
+
+/* --- Hobby photo grid --------------------------------------- */
+/* Grid of photo placeholders; images drop into site/images/hobbies/ */
+.hobby-photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.hobby-photo {
+  aspect-ratio: 4 / 3;
+  background: #111;
+  border: 1px dashed #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #444;
+  font-size: 0.75rem;
+  overflow: hidden;
+}
+
+/* When a real image is loaded it fills the slot */
+.hobby-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .hobby-photos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --- Blinking Cursor (CSS-only) ---------------------------- */
+/* Add <span class="cursor"></span> at the end of .terminal__content */
+.cursor::after {
+  content: '▋';
+  color: var(--color-val);
+  animation: blink 1.2s step-end infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* --- Responsive -------------------------------------------- */
+@media (max-width: 768px) {
+  /* Remove outer padding so terminal fills screen edge-to-edge */
+  body {
+    padding: 0;
+    align-items: flex-start;
+  }
+
+  .terminal {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    box-shadow: none;
+    width: 100%;
+  }
+
+  .terminal__titlebar-title {
+    font-size: 11px;
+  }
+
+  .terminal__content {
+    padding: 18px 16px 36px;
+    font-size: 13px;
+  }
+
+  .terminal__tab {
+    padding: 6px 12px 5px;
+    font-size: 12px;
+  }
+
+  .yaml-block {
+    padding-left: 12px;
+  }
+
+  .yaml-list-block {
+    padding-left: 24px;
+  }
+}

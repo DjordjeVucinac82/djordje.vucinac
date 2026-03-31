@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>experience — djordje.vucinac.com</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="terminal">
+
+    <!-- TITLE BAR -->
+    <div class="terminal__titlebar">
+      <div class="terminal__titlebar-dots">
+        <span class="terminal__dot terminal__dot--close"></span>
+        <span class="terminal__dot terminal__dot--min"></span>
+        <span class="terminal__dot terminal__dot--max"></span>
+      </div>
+      <span class="terminal__titlebar-title">djordje.vucinac.com — experience</span>
+    </div>
+
+    <!-- TAB BAR: experience tab is active on this page -->
+    <nav class="terminal__tabbar" aria-label="Site navigation">
+      <a href="about.html"      class="terminal__tab">about</a>
+      <a href="education.html"  class="terminal__tab">education</a>
+      <a href="experience.html" class="terminal__tab terminal__tab--active">experience</a>
+      <a href="hobbies.html"    class="terminal__tab">hobbies</a>
+    </nav>
+
+    <!-- CONTENT -->
+    <main class="terminal__content" id="content">
+
+      <span class="yaml-comment"># ~/vucinac/experience.yaml</span>
+
+      <!-- Section: experience -->
+      <span class="yaml-section"><span class="yaml-key">experience</span><span class="yaml-punct">:</span></span>
+      <div class="yaml-block">
+
+        <!-- Job 1: AxiomQ -->
+        <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-key">company</span><span class="yaml-punct">: </span><span class="yaml-val">AxiomQ</span></span>
+        <div class="yaml-list-block">
+          <span class="yaml-inline"><span class="yaml-key">role</span><span class="yaml-punct">: </span><span class="yaml-val">DevOps Engineer</span></span>
+          <span class="yaml-inline"><span class="yaml-key">period</span><span class="yaml-punct">: </span><span class="yaml-val">January 2026 – March 2026</span></span>
+          <span class="yaml-inline"><span class="yaml-key">location</span><span class="yaml-punct">: </span><span class="yaml-val">Novi Sad, Serbia</span></span>
+          <span class="yaml-inline"><span class="yaml-key">stack</span><span class="yaml-punct">: </span><span class="yaml-val">Node.js, JavaScript, AWS EKS, Terraform, Terragrunt, GitLab CI, Amplify, Nx</span></span>
+          <span class="yaml-key">responsibilities</span><span class="yaml-punct">:</span>
+          <div class="yaml-block">
+            <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-val">Took ownership of the full deployment lifecycle for a Node.js monorepo platform — Nx orchestrated frontend and backend apps within a single repository, keeping builds consistent and cross-service dependency management clean.</span></span>
+            <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-val">Designed and maintained GitLab CI pipelines end-to-end: React frontend shipped automatically to AWS Amplify on merge, while backend Node.js microservices were containerised, pushed to ECR, and rolled out to EKS — fully automated with no manual steps.</span></span>
+            <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-val">Managed all cloud infrastructure with Terraform and Terragrunt, separating reusable module definitions from environment configs and keeping Kubernetes manifests in a dedicated repo. Every change was code-reviewed, versioned, and easy to roll back.</span></span>
+            <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-val">Day-to-day tooling: k9s for live cluster inspection, Colima as a lightweight Docker Desktop alternative on macOS, CloudWatch and S3 for observability and artefact storage, Cursor AI inside VS Code to accelerate scripting and config work.</span></span>
+          </div>
+        </div>
+
+        <!-- Job 2: Jaggaer -->
+        <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-key">company</span><span class="yaml-punct">: </span><span class="yaml-val">Jaggaer</span></span>
+        <div class="yaml-list-block">
+          <span class="yaml-inline"><span class="yaml-key">role</span><span class="yaml-punct">: </span><span class="yaml-val">DevOps &amp; MLOps Engineer</span></span>
+          <span class="yaml-inline"><span class="yaml-key">period</span><span class="yaml-punct">: </span><span class="yaml-val">January 2024 – October 2025</span></span>
+          <span class="yaml-inline"><span class="yaml-key">location</span><span class="yaml-punct">: </span><span class="yaml-val">Belgrade, Serbia</span></span>
+          <span class="yaml-inline"><span class="yaml-key">stack</span><span class="yaml-punct">: </span><span class="yaml-val">Java, Python, AWS ECS Fargate, EKS, Jenkins, SageMaker, Bedrock, Splunk</span></span>
+          <span class="yaml-key">responsibilities</span><span class="yaml-punct">:</span>
+          <div class="yaml-block">
+            <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-val">Maintained CI/CD workflows with Jenkins across multiple production and non-production AWS EKS clusters, managing the full build, test, and deployment pipeline for Java microservices using Helm charts and Kubernetes manifests.</span></span>
+            <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-val">Expanded into MLOps by deploying Python-based ML pipelines and model endpoints using AWS SageMaker AI Studio. Integrated AWS Bedrock with Anthropic Claude Sonnet as the LLM backbone for an internal AI feature — handling both the infrastructure side and pipeline wiring between services.</span></span>
+            <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-val">Provisioned ECS Fargate clusters using Terraform and shell scripts; built and pushed Docker images to ECR through Jenkins. Managed all secrets centrally via AWS Secrets Manager.</span></span>
+            <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-val">Daily tooling: Splunk for log analysis and alerting, SonarQube for code quality gates, Nexus as the artefact repository, and a broad set of AWS services: DynamoDB, SQS, IAM, ALB, EC2, S3, and EventBridge Scheduler.</span></span>
+          </div>
+        </div>
+
+        <!-- Job 3: HTEC -->
+        <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-key">company</span><span class="yaml-punct">: </span><span class="yaml-val">HTEC</span></span>
+        <div class="yaml-list-block">
+          <span class="yaml-inline"><span class="yaml-key">role</span><span class="yaml-punct">: </span><span class="yaml-val">DevOps Engineer</span></span>
+          <span class="yaml-inline"><span class="yaml-key">period</span><span class="yaml-punct">: </span><span class="yaml-val">September 2022 – July 2023</span></span>
+          <span class="yaml-inline"><span class="yaml-key">location</span><span class="yaml-punct">: </span><span class="yaml-val">Belgrade, Serbia</span></span>
+          <span class="yaml-inline"><span class="yaml-key">stack</span><span class="yaml-punct">: </span><span class="yaml-val">Java, ReactJS, Azure DevOps, Docker, AWS EKS, Helm, Spinnaker, Nginx</span></span>
+          <span class="yaml-key">projects</span><span class="yaml-punct">:</span>
+          <div class="yaml-block">
+            <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-key">name</span><span class="yaml-punct">: </span><span class="yaml-val">Java / ReactJS web application</span></span>
+            <div class="yaml-list-block">
+              <span class="yaml-key">notes</span><span class="yaml-punct">:</span>
+              <div class="yaml-block">
+                <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-val">Built and maintained the CI/CD pipeline for a Java/React application using Azure DevOps — local development ran on docker-compose, while cloud deployments were fully automated through the pipeline, keeping releases consistent and auditable.</span></span>
+              </div>
+            </div>
+            <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-key">name</span><span class="yaml-punct">: </span><span class="yaml-val">Java / ReactJS web application</span></span>
+            <div class="yaml-list-block">
+              <span class="yaml-key">notes</span><span class="yaml-punct">:</span>
+              <div class="yaml-block">
+                <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-val">Supported Kubernetes workloads on AWS EKS, maintaining Helm charts and raw manifests for reliable deployments. Used Spinnaker for advanced pipeline orchestration, Nginx as the ingress controller, and Box/Shield for secure secrets management.</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 4: Noubis -->
+        <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-key">company</span><span class="yaml-punct">: </span><span class="yaml-val">Noubis</span></span>
+        <div class="yaml-list-block">
+          <span class="yaml-inline"><span class="yaml-key">role</span><span class="yaml-punct">: </span><span class="yaml-val">DevOps Engineer</span></span>
+          <span class="yaml-inline"><span class="yaml-key">period</span><span class="yaml-punct">: </span><span class="yaml-val">September 2020 – October 2022</span></span>
+          <span class="yaml-inline"><span class="yaml-key">location</span><span class="yaml-punct">: </span><span class="yaml-val">Novi Sad, Serbia</span></span>
+          <span class="yaml-inline"><span class="yaml-key">stack</span><span class="yaml-punct">: </span><span class="yaml-val">Python, Django, Node.js, React Native, AWS, Terraform, SaltStack, GitHub Actions</span></span>
+          <span class="yaml-key">projects</span><span class="yaml-punct">:</span>
+          <div class="yaml-block">
+            <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-key">name</span><span class="yaml-punct">: </span><span class="yaml-val">Python / Django web application</span></span>
+            <div class="yaml-list-block">
+              <span class="yaml-key">notes</span><span class="yaml-punct">:</span>
+              <div class="yaml-block">
+                <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-val">Led a monitoring migration from NewRelic to Splunk — deployed agents across all environments, defined metrics, detectors and distributed traces, and built dashboards for production and dev. Went from limited visibility to a proper observability setup in a single sprint.</span></span>
+                <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-val">Extended SaltStack configuration management so every new server provisioned automatically included the full Splunk configuration, eliminating manual post-setup steps. Also identified and fixed several gaps in existing Terraform infrastructure definitions.</span></span>
+              </div>
+            </div>
+            <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-key">name</span><span class="yaml-punct">: </span><span class="yaml-val">Node.js / React Native mobile application</span></span>
+            <div class="yaml-list-block">
+              <span class="yaml-key">notes</span><span class="yaml-punct">:</span>
+              <div class="yaml-block">
+                <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-val">Set up a fully automated deployment pipeline with GitHub Actions for a Node.js backend: build Docker image, push to ECR, update the ECS task definition — all triggered on every release branch merge. Infrastructure provisioned via CloudFormation. Stack included RDS MySQL, Nginx, Let's Encrypt, AWS Shield, and CloudWatch.</span></span>
+              </div>
+            </div>
+            <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-key">name</span><span class="yaml-punct">: </span><span class="yaml-val">Node.js web application</span></span>
+            <div class="yaml-list-block">
+              <span class="yaml-key">notes</span><span class="yaml-punct">:</span>
+              <div class="yaml-block">
+                <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-val">Deployed the backend to AWS Elastic Beanstalk using CodePipeline and CodeBuild with a buildspec.yaml — build artefacts were pushed to S3, and static frontend assets were served and updated through the same pipeline, keeping the release process fully hands-off.</span></span>
+              </div>
+            </div>
+            <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-key">name</span><span class="yaml-punct">: </span><span class="yaml-val">Node.js / ReactJS web application</span></span>
+            <div class="yaml-list-block">
+              <span class="yaml-key">notes</span><span class="yaml-punct">:</span>
+              <div class="yaml-block">
+                <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-val">Built GitHub Actions workflows to containerise and deploy a Node.js/React application to Ubuntu EC2 instances. CloudFormation covered all infrastructure provisioning; Nginx and CertBot handled HTTPS termination, and Redis was used for session caching.</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 5: Symlink -->
+        <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-key">company</span><span class="yaml-punct">: </span><span class="yaml-val">Symlink</span></span>
+        <div class="yaml-list-block">
+          <span class="yaml-inline"><span class="yaml-key">role</span><span class="yaml-punct">: </span><span class="yaml-val">DevOps Engineer</span></span>
+          <span class="yaml-inline"><span class="yaml-key">period</span><span class="yaml-punct">: </span><span class="yaml-val">September 2018 – August 2020</span></span>
+          <span class="yaml-inline"><span class="yaml-key">location</span><span class="yaml-punct">: </span><span class="yaml-val">Subotica, Serbia</span></span>
+          <span class="yaml-inline"><span class="yaml-key">stack</span><span class="yaml-punct">: </span><span class="yaml-val">Node.js, React Native, .NET C#, AWS, GitHub Actions, Ansible, GitLab CI, CloudFormation</span></span>
+          <span class="yaml-key">projects</span><span class="yaml-punct">:</span>
+          <div class="yaml-block">
+            <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-key">name</span><span class="yaml-punct">: </span><span class="yaml-val">Node.js / ReactJS serverless web application</span></span>
+            <div class="yaml-list-block">
+              <span class="yaml-key">notes</span><span class="yaml-punct">:</span>
+              <div class="yaml-block">
+                <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-val">Designed the full AWS infrastructure from scratch using CloudFormation: VPC with subnets and route tables, Application Load Balancer, ECS Fargate, RDS Postgres, API Gateway, Lambda functions, and ACM for TLS certificates. Migrated CI/CD from AWS CodePipeline to GitHub Actions, and contributed to sprint regression and E2E testing.</span></span>
+              </div>
+            </div>
+            <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-key">name</span><span class="yaml-punct">: </span><span class="yaml-val">Node.js / React Native mobile application</span></span>
+            <div class="yaml-list-block">
+              <span class="yaml-key">notes</span><span class="yaml-punct">:</span>
+              <div class="yaml-block">
+                <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-val">Deployed Node.js backend and mobile app services to AWS — one environment ran on EC2 via docker-compose with GitHub Actions updating on every PR; a second service ran on ECS with GitHub Actions building the Docker image, pushing to ECR, and updating the task definition automatically. Both used CloudFormation, Nginx and Let's Encrypt for HTTPS, and RDS MySQL. The ECS setup also included AWS Shield and CloudWatch.</span></span>
+              </div>
+            </div>
+            <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-key">name</span><span class="yaml-punct">: </span><span class="yaml-val">.NET C# web application</span></span>
+            <div class="yaml-list-block">
+              <span class="yaml-key">notes</span><span class="yaml-punct">:</span>
+              <div class="yaml-block">
+                <span class="yaml-list-item"><span class="yaml-punct">- </span><span class="yaml-val">Built and deployed containerised .NET C# services to AWS EC2 using GitLab CI. Configuration management was handled with Ansible playbooks — covering all required packages, dependencies, and service setup on each node. Managed SQL Server infrastructure running directly on EC2 instances.</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <span class="cursor"></span>
+
+    </main>
+
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

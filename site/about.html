@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>about — djordje.vucinac.com</title>
+  <!-- JetBrains Mono from Google Fonts (terminal-style monospace) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="terminal">
+
+    <!-- TITLE BAR: traffic light dots + centered window title -->
+    <div class="terminal__titlebar">
+      <div class="terminal__titlebar-dots">
+        <span class="terminal__dot terminal__dot--close"></span>
+        <span class="terminal__dot terminal__dot--min"></span>
+        <span class="terminal__dot terminal__dot--max"></span>
+      </div>
+      <span class="terminal__titlebar-title">djordje.vucinac.com — about</span>
+    </div>
+
+    <!-- TAB BAR: navigation tabs (about tab is active on this page) -->
+    <nav class="terminal__tabbar" aria-label="Site navigation">
+      <a href="about.html"      class="terminal__tab terminal__tab--active">about</a>
+      <a href="education.html"  class="terminal__tab">education</a>
+      <a href="experience.html" class="terminal__tab">experience</a>
+      <a href="hobbies.html"    class="terminal__tab">hobbies</a>
+    </nav>
+
+    <!-- CONTENT: displayed as YAML syntax -->
+    <main class="terminal__content" id="content">
+
+      <span class="yaml-comment"># ~/vucinac/about.yaml</span>
+
+      <!-- Section: about -->
+      <span class="yaml-section"><span class="yaml-key">about</span><span class="yaml-punct">:</span></span>
+      <div class="yaml-block">
+        <span class="yaml-inline"><span class="yaml-key">name</span><span class="yaml-punct">: </span><span class="yaml-val">Djordje Vucinac</span></span>
+        <span class="yaml-inline"><span class="yaml-key">role</span><span class="yaml-punct">: </span><span class="yaml-val">DevOps / Cloud Engineer</span></span>
+        <span class="yaml-key">location</span><span class="yaml-punct">:</span>
+        <div class="yaml-block">
+          <span class="yaml-inline"><span class="yaml-key">city</span><span class="yaml-punct">: </span><span class="yaml-val">Subotica</span></span>
+          <span class="yaml-inline"><span class="yaml-key">country</span><span class="yaml-punct">: </span><span class="yaml-val">Serbia</span></span>
+        </div>
+        <span class="yaml-inline"><span class="yaml-key">experience</span><span class="yaml-punct">: </span><span class="yaml-val">7+ years</span></span>
+        <span class="yaml-inline"><span class="yaml-key">email</span><span class="yaml-punct">: </span><span class="yaml-val">djordje@vucinac.com</span></span>
+      </div>
+
+      <!-- Section: summary (block scalar with | ) -->
+      <span class="yaml-section"><span class="yaml-key">summary</span><span class="yaml-punct">: </span><span class="yaml-punct">|</span></span>
+      <div class="yaml-block">
+        <span class="yaml-val">  Cloud-native DevOps engineer with 7+ years of experience</span>
+        <span class="yaml-val">  designing and operating production infrastructure on AWS.</span>
+        <span class="yaml-val">  Specialised in Kubernetes, Terraform, and CI/CD automation.</span>
+        <span class="yaml-val">  Former network engineer (CCNA 2018). Passionate about</span>
+        <span class="yaml-val">  reliability, observability, and developer experience.</span>
+      </div>
+
+      <!-- Section: skills -->
+      <span class="yaml-section"><span class="yaml-key">skills</span><span class="yaml-punct">:</span></span>
+      <div class="yaml-block">
+        <span class="yaml-inline"><span class="yaml-key">cloud</span><span class="yaml-punct">: </span><span class="yaml-val">AWS (EKS, EC2, S3, RDS, VPC, IAM, CloudFront, ECS)</span></span>
+        <span class="yaml-inline"><span class="yaml-key">containers</span><span class="yaml-punct">: </span><span class="yaml-val">Docker, Kubernetes, Helm</span></span>
+        <span class="yaml-inline"><span class="yaml-key">iac</span><span class="yaml-punct">: </span><span class="yaml-val">Terraform, Ansible</span></span>
+        <span class="yaml-inline"><span class="yaml-key">cicd</span><span class="yaml-punct">: </span><span class="yaml-val">GitHub Actions, Jenkins, ArgoCD</span></span>
+        <span class="yaml-inline"><span class="yaml-key">monitoring</span><span class="yaml-punct">: </span><span class="yaml-val">Prometheus, Grafana, ELK Stack, Datadog</span></span>
+        <span class="yaml-inline"><span class="yaml-key">networking</span><span class="yaml-punct">: </span><span class="yaml-val">TCP/IP, BGP, VPN, Load Balancing (CCNA)</span></span>
+        <span class="yaml-inline"><span class="yaml-key">languages</span><span class="yaml-punct">: </span><span class="yaml-val">Python, Bash, Go (basic)</span></span>
+      </div>
+
+      <!-- Section: links -->
+      <span class="yaml-section"><span class="yaml-key">links</span><span class="yaml-punct">:</span></span>
+      <div class="yaml-block">
+        <span class="yaml-inline"><span class="yaml-key">linkedin</span><span class="yaml-punct">: </span><a class="yaml-val yaml-link" href="https://www.linkedin.com/in/djordje-vucinac-b80761b9/" target="_blank" rel="noopener">linkedin.com/in/djordje-vucinac</a></span>
+        <span class="yaml-inline"><span class="yaml-key">github</span><span class="yaml-punct">: </span><a class="yaml-val yaml-link" href="https://github.com/DjordjeVucinac82" target="_blank" rel="noopener">github.com/DjordjeVucinac82</a></span>
+      </div>
+
+      <!-- Blinking cursor at end of content -->
+      <span class="cursor"></span>
+
+    </main>
+
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
