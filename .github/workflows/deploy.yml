@@ -18,6 +18,7 @@ on:
   push:
     branches:
       - dev
+  workflow_dispatch:  # Allows manual trigger from the GitHub Actions UI
 
 # Prevent two deployments running at the same time.
 # If a new push comes in while a deploy is running, cancel the old one.
