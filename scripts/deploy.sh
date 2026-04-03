@@ -32,7 +32,8 @@ aws s3 sync site/ "s3://$BUCKET_NAME" \
   --delete \
   --cache-control "max-age=86400" \
   --exclude ".DS_Store" \
-  --exclude "*.swp"
+  --exclude "*.swp" \
+  --exclude "*.pdf"
 
 echo "Upload complete."
 echo ""

@@ -55,7 +55,8 @@ jobs:
             --delete \
             --cache-control "max-age=86400" \
             --exclude ".DS_Store" \
-            --exclude "*.swp"
+            --exclude "*.swp" \
+            --exclude "*.pdf"
 
       # 4. Invalidate CloudFront cache so visitors get the latest files immediately.
       #    Without this, CloudFront may serve stale content for up to 24 hours.
