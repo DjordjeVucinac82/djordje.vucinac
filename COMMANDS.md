@@ -93,7 +93,7 @@ terraform destroy
 
 This script:
 1. Reads S3 bucket name and CloudFront distribution ID from Terraform outputs
-2. Syncs `site/` to S3 (with `--delete` to remove old files)
+2. Syncs `site/` to S3 (with `--delete` to remove old files; `*.pdf` files are excluded from deletion to preserve manually uploaded assets like the CV)
 3. Creates a CloudFront invalidation to flush the cache
 
 ---

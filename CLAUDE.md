@@ -61,6 +61,7 @@ Personal portfolio website with a terminal/YAML aesthetic.
 - Git repo: **github.com/DjordjeVucinac82/djordje.vucinac** — default branch is `dev`
 - Content: **real CV data populated** — experience, education, hobbies all updated
 - Hobby photos: **pending** — drop images into `site/images/hobbies/` when ready
+- CV PDF: `CV-2026-Djordje_Vucinac.pdf` is stored at the root of the S3 bucket (`vucinac-portfolio-site`), served via CloudFront at `https://djordje.vucinac.com/CV-2026-Djordje_Vucinac.pdf`. The deploy sync excludes `*.pdf` so it is never deleted by CI/CD.
 - AWS region: **eu-central-1** for S3/CloudFront; ACM always **us-east-1** (AWS requirement, handled by provider alias)
 - S3 bucket is **private** — CloudFront accesses it via OAC (more secure than public bucket)
 - Tab labels: plain names (`about`, `education`, `experience`, `hobbies`) — no `-zsh` suffix
