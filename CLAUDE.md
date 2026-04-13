@@ -25,8 +25,8 @@ Personal portfolio website with a terminal/YAML aesthetic.
 - [x] Build base layout: JetBrains Mono font, black background, macOS terminal window chrome
 - [x] Design YAML-style content rendering (red keys, yellow values, green comments)
 - [x] Build pages:
-  - [x] `index.html` — redirect to about.html
-  - [x] `about.html` — About Me / landing (real CV data, clickable LinkedIn + GitHub links)
+  - [x] `index.html` — redirect to aboutme.html
+  - [x] `aboutme.html` — About Me / landing (real CV data, clickable LinkedIn + GitHub links)
   - [x] `education.html` — MSc Economics + BSc Marketing (Megatrend), CCNA cert
   - [x] `experience.html` — 5 real jobs: AxiomQ, Jaggaer, HTEC, Noubis, Symlink
   - [x] `hobbies.html` — Scuba Diving + Hiking (photo placeholders), Open Source, Reading, AI Engineering
@@ -77,8 +77,8 @@ vucinac/
 ├── package.json            # Playwright + http-server
 ├── playwright.config.js    # Playwright config (must be at project root)
 ├── site/                   # Frontend source
-│   ├── index.html          # Redirect to about.html
-│   ├── about.html          # Real CV: name, role, skills, LinkedIn, GitHub
+│   ├── index.html          # Redirect to aboutme.html
+│   ├── aboutme.html          # Real CV: name, role, skills, LinkedIn, GitHub
 │   ├── education.html      # MSc Economics, BSc Marketing, CCNA
 │   ├── experience.html     # 5 real jobs (AxiomQ → Symlink)
 │   ├── hobbies.html        # Scuba, Hiking (photo slots), Open Source, Reading, AI

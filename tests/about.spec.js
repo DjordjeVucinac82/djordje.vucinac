@@ -1,17 +1,17 @@
-// Tests for about.html — the landing page
+// Tests for aboutme.html — the landing page
 const { test, expect } = require('@playwright/test');
 
-test.describe('about.html', () => {
+test.describe('aboutme.html', () => {
 
   // Navigate to the about page before each test
   test.beforeEach(async ({ page }) => {
-    await page.goto('/about.html');
+    await page.goto('/aboutme.html');
   });
 
   // ── Page load ──────────────────────────────────────────────
 
   test('page loads successfully (HTTP 200)', async ({ page }) => {
-    const response = await page.goto('/about.html');
+    const response = await page.goto('/aboutme.html');
     expect(response.status()).toBe(200);
   });
 
@@ -41,7 +41,7 @@ test.describe('about.html', () => {
   // ── Tab state ───────────────────────────────────────────────
 
   test('about tab has active class', async ({ page }) => {
-    await expect(page.locator('.terminal__tab[href="about.html"]')).toHaveClass(/terminal__tab--active/);
+    await expect(page.locator('.terminal__tab[href="aboutme.html"]')).toHaveClass(/terminal__tab--active/);
   });
 
   test('other tabs do NOT have active class', async ({ page }) => {
@@ -51,7 +51,7 @@ test.describe('about.html', () => {
   });
 
   test('all four navigation tabs are present', async ({ page }) => {
-    await expect(page.locator('.terminal__tab[href="about.html"]')).toBeVisible();
+    await expect(page.locator('.terminal__tab[href="aboutme.html"]')).toBeVisible();
     await expect(page.locator('.terminal__tab[href="education.html"]')).toBeVisible();
     await expect(page.locator('.terminal__tab[href="experience.html"]')).toBeVisible();
     await expect(page.locator('.terminal__tab[href="hobbies.html"]')).toBeVisible();

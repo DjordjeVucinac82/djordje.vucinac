@@ -8,7 +8,7 @@ Black background, red YAML keys, yellow YAML values — styled to look like a ma
 
 | Page | File | Content |
 |---|---|---|
-| About Me | `site/about.html` | Name, role, skills, contact links |
+| About Me | `site/aboutme.html` | Name, role, skills, contact links |
 | Education | `site/education.html` | MSc Economics, BSc Marketing, CCNA |
 | Experience | `site/experience.html` | 5 jobs: AxiomQ, Jaggaer, HTEC, Noubis, Symlink |
 | Hobbies | `site/hobbies.html` | Scuba diving, hiking, open source, reading, AI |
@@ -27,7 +27,7 @@ Black background, red YAML keys, yellow YAML values — styled to look like a ma
 npm install
 npx playwright install chromium
 npx http-server site -p 8080
-# open http://localhost:8080/about.html
+# open http://localhost:8080/aboutme.html
 ```
 
 ## Run tests
@@ -41,7 +41,7 @@ npm test
 ```bash
 docker build -t vucinac .
 docker run --rm -p 8081:80 vucinac
-# open http://localhost:8081/about.html
+# open http://localhost:8081/aboutme.html
 ```
 
 ## Deploy to AWS

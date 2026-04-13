@@ -6,7 +6,7 @@
  *
  * Note: Each HTML file already hard-codes the active class for its
  * own tab (so this works without JS too). This script is a fallback
- * and handles any edge cases (e.g. index.html redirecting to about.html).
+ * and handles any edge cases (e.g. index.html redirecting to aboutme.html).
  */
 // Disable browser scroll restoration so refresh always starts at the top
 if ('scrollRestoration' in history) {
@@ -19,11 +19,11 @@ window.scrollTo(0, 0);
 
   // Get the current filename from the URL path (e.g. "education.html")
   var path = window.location.pathname;
-  var filename = path.split('/').pop() || 'about.html';
+  var filename = path.split('/').pop() || 'aboutme.html';
 
   // Treat root / and index.html as the about page
   if (filename === '' || filename === 'index.html') {
-    filename = 'about.html';
+    filename = 'aboutme.html';
   }
 
   // Find all tabs and mark the one matching the current page as active

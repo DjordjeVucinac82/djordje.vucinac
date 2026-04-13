@@ -15,7 +15,7 @@ module.exports = defineConfig({
   reporter: 'list',
 
   use: {
-    // All page.goto() calls use this as the base (can use '/about.html' instead of full URL)
+    // All page.goto() calls use this as the base (can use '/aboutme.html' instead of full URL)
     baseURL: 'http://localhost:8080',
 
     // Run headless by default (override with `npm run test:headed`)

@@ -25,7 +25,7 @@ test.describe('education.html', () => {
   });
 
   test('about tab is NOT active', async ({ page }) => {
-    await expect(page.locator('.terminal__tab[href="about.html"]')).not.toHaveClass(/terminal__tab--active/);
+    await expect(page.locator('.terminal__tab[href="aboutme.html"]')).not.toHaveClass(/terminal__tab--active/);
   });
 
   test('experience and hobbies tabs are NOT active', async ({ page }) => {
@@ -65,8 +65,8 @@ test.describe('education.html', () => {
 
   // ── Navigation ──────────────────────────────────────────────
 
-  test('clicking about tab navigates to about.html', async ({ page }) => {
-    await page.locator('.terminal__tab[href="about.html"]').click();
+  test('clicking about tab navigates to aboutme.html', async ({ page }) => {
+    await page.locator('.terminal__tab[href="aboutme.html"]').click();
     await expect(page).toHaveURL(/about\.html/);
   });
 

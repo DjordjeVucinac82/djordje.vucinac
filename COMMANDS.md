@@ -16,7 +16,7 @@ npx playwright install chromium
 ```bash
 npx http-server site -p 8080
 ```
-Then open: http://localhost:8080/about.html
+Then open: http://localhost:8080/aboutme.html
 
 ## Run Playwright tests (headless)
 ```bash
@@ -42,14 +42,14 @@ docker build -t vucinac .
 # Run on port 8081 (or any free port)
 docker run --rm -p 8081:80 vucinac
 ```
-Then open: http://localhost:8081/about.html
+Then open: http://localhost:8081/aboutme.html
 
 ---
 
 ## Update content
 All site content lives in `site/*.html`.
 Edit the relevant file and refresh the browser — no build step needed.
-- `site/about.html` — name, role, skills, contact
+- `site/aboutme.html` — name, role, skills, contact
 - `site/education.html` — degree, certifications
 - `site/experience.html` — work history
 - `site/hobbies.html` — hobbies and interests

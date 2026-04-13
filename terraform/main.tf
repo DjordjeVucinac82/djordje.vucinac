@@ -208,7 +208,7 @@ resource "aws_cloudfront_distribution" "site" {
   comment             = "${var.project} portfolio site"
 
   # CloudFront returns index.html for requests to the root URL (/)
-  # index.html redirects to about.html via meta refresh
+  # index.html redirects to aboutme.html via meta refresh
   default_root_object = "index.html"
 
   # Custom domain aliases — only set when domain_name is provided
