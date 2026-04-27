@@ -241,7 +241,7 @@ html, body {
 }
 
 /* --- Hobby photo grid --------------------------------------- */
-/* Grid of photo placeholders; images drop into site/images/hobbies/ */
+/* Grid of photo slots; images are loaded from Google Drive direct links */
 .hobby-photos {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
